@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 use Mojolicious::Lite;
-use File::Basename 'basename';
-use File::Path 'mkpath';
 #########################
 # DUMP - http dump daemon
 # SETUP #################
