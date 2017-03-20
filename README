@@ -38,3 +38,9 @@ murmurd :8881
 #####################
 # MAIL
 mail :25
+#####################
+# PRINTER
+print :secret
+#####################
+# VPS
+ssh :secret
