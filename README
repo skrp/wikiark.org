@@ -7,7 +7,6 @@ ZFS heals entropy
 Storage get cheaper
 ######################
 # HTTP
-# SIMPLE #############
 http raw dump :6660
 http raw server :6661
 http dump :6662
