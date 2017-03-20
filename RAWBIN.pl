@@ -36,7 +36,7 @@ get '/:id' => sub {
 	my $loc = $dir . $id;
 	return $c->render(message => 'PASTE NO EXIST') unless -e $loc;
 	open(my $pfh, "<:encoding(UTF-8)", $loc) or die;
-	my $paste = <$pfh>;
+	my $paste = do { local $/; <$pfh>; };
 	$c->render(text => $paste); 
 } => 'view';
 ################################
@@ -94,5 +94,6 @@ __DATA__
 </html>
 
 @@ view.html.ep
-my @paste = split("\n", $paste); my $total = @paste;
-"$_\n" for 1 .. $total
+my @paste = split("\n", $paste); 
+my $total = @paste;
+"$_\n" for 1 .. $total;
