@@ -2,7 +2,6 @@
 use strict; use warnings;
 use Mojolicious::Lite;
 use Digest::SHA1 'sha1_hex';
-use File::Slurp 'read_file';
 ##############################
 # RAWBIN - raw pastebin server
 #############################
@@ -27,8 +26,8 @@ post '/', sub {
 	open(my $pfh, '>', $loc);	
 	print $pfh $enc_paste;
 # FILE #########################
-  	$c->render(text => "PASTE SUCCESS @ wikiark.org/paste/$id");
-};
+	$c->render(text => "PASTE SUCCESS:    wikiark.org/paste/$id");
+}; 
 ###############################
 # CALL
 get '/:id' => sub {
@@ -36,7 +35,8 @@ get '/:id' => sub {
 	my $id = $c->stash('id');
 	my $loc = $dir . $id;
 	return $c->render(message => 'PASTE NO EXIST') unless -e $loc;
-	my $paste = read_file($loc);
+	open(my $pfh, "<:encoding(UTF-8)", $loc) or die;
+	my $paste = <$pfh>;
 	$c->render(text => $paste); 
 } => 'view';
 ################################
