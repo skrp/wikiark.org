@@ -37,8 +37,9 @@ get '/:id' => sub {
 	return $c->render(message => 'PASTE NO EXIST') unless -e $loc;
 	open(my $pfh, "<:encoding(UTF-8)", $loc) or die;
 	my $paste = do { local $/; <$pfh>; };
+	$paste =~ s/\n/<br>\n/g;
 	$c->render(text => $paste); 
-} => 'view';
+};
 ################################
 # END
 app->start('daemon', '-l', 'http://*:8091');
@@ -92,8 +93,3 @@ __DATA__
         <div class="clear">
     </body>
 </html>
-
-@@ view.html.ep
-my @paste = split("\n", $paste); 
-my $total = @paste;
-"$_\n" for 1 .. $total;
