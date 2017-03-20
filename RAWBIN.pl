@@ -4,16 +4,12 @@ use Mojolicious::Lite;
 use Digest::SHA1 'sha1_hex';
 ##############################
 # RAWBIN - raw pastebin server
-#############################
-# SETUP
+# SETUP ######################
 my $dir = 'paste/';
 die "no paste dir" unless -d $dir;
-#app->renderer->types->type(raw => 'text/plain; charset=utf-8');
-##############################
-# ROOT 
+# ROOT ####################### 
 get '/' => 'form';
-##############################
-# PASTE
+# PASTE ######################
 post '/', sub {
 	my $c = shift;
 	my $paste = $c->param('paste');
@@ -25,11 +21,9 @@ post '/', sub {
 	my $loc = $dir . $id;
 	open(my $pfh, '>', $loc);	
 	print $pfh $enc_paste;
-# FILE #########################
 	$c->render(text => "wikiark.org/paste/$id");
 }; 
-###############################
-# CALL
+# CALL ########################
 get '/:id' => sub {
 	my $c = shift;
 	my $id = $c->stash('id');
@@ -39,9 +33,8 @@ get '/:id' => sub {
 	my $paste = do { local $/; <$pfh>; };
 	$c->render(text => $paste, format => 'txt'); 
 };
-################################
-# END
-app->start('daemon', '-l', 'http://*:8091');
+# END ########################
+app->start;
 __DATA__
 @@ form.html.ep
 <html>
