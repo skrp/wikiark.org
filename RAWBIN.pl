@@ -26,7 +26,7 @@ post '/', sub {
 	open(my $pfh, '>', $loc);	
 	print $pfh $enc_paste;
 # FILE #########################
-	$c->render(text => "PASTE SUCCESS:    wikiark.org/paste/$id");
+	$c->render(text => "wikiark.org/paste/$id");
 }; 
 ###############################
 # CALL
