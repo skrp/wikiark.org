@@ -5,3 +5,11 @@ Massive File Bank
 Files are lost to entropy
 ZFS heals entropy
 Storage get cheaper
+################
+# HTTP
+raw http dump :6660
+raw http server :6661
+http dump :6662
+html server :6663
+html raw http server :6664
+html http dump server :6665
