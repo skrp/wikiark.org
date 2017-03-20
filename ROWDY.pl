@@ -10,3 +10,4 @@ get '/:id' => sub {
   my $paste = read_file($loc);
   $c->render(text => $paste, format => 'txt');
 };
+app->start('daemon', '-l', 'http://*:6662');
