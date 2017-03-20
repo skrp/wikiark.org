@@ -27,9 +27,8 @@ post '/', sub {
 	open(my $pfh, '>', $loc);	
 	print $pfh $enc_paste;
 # FILE #########################
-#	$c->redirect_to(id => $id); 
-} => 'view';
-#=> 'form';
+  	$c->render(text => "PASTE SUCCESS @ wikiark.org/paste/$id");
+};
 ###############################
 # CALL
 get '/:id' => sub {
