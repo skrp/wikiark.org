@@ -13,10 +13,12 @@ http dump :6662
 http chat :6663
 http git :6664
 http proxy :6665
+http share server:6666
 # HTML ###############
 html http server :7770
 html http raw server :7771
 html http dump server :7772
+html http shar server :7773
 ######################
 # IRC
 irc server :
