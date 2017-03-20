@@ -10,6 +10,9 @@ Storage get cheaper
 raw http dump :6660
 raw http server :6661
 http dump :6662
-html server :6663
-html raw http server :6664
-html http dump server :6665
+http chat :6663
+http chatr  :6664
+
+html server :7770
+html raw http server :7771
+html http dump server :7772
