@@ -3,6 +3,7 @@ use strict; use warnings;
 ########################
 # GREETY - raw http dump
 get '/' => 'form';
+app->start('daemon', '-l', 'http://*:6660');
 __DATA__
 @@ form.html.ep
 <html>
