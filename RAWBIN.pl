@@ -94,23 +94,5 @@ __DATA__
 </html>
 
 @@ view.html.ep
-% layout 'wrapper';
-<table width="100%">
-<tr>
-% my $class = 'txt';
-<td>
-<a href="<%= url_for format => 'raw' %>">raw</a> 
-</td></tr>
-</table>
-<br />
-% my @paste = split("\n", $paste); my $total = @paste;
-<div class="content">
-<div style="float:left;text-align:right">
-<pre class="lines"><code><%== "$_\n" for 1 .. $total %></code></pre>
-</div>
-<div class="float:right">
-<pre><code class="<%= $class %>"><%= $paste %></code></pre>
-</div>
-<div class="clear"></div>
-</div>
-<br />
+my @paste = split("\n", $paste); my $total = @paste;
+"$_\n" for 1 .. $total
