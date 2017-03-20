@@ -2,14 +2,18 @@
 use strict; use warnings;
 use Mojolicious::Lite;
 use Digest::SHA1 'sha1_hex';
+use File::Slurp 'read_file';
 ##############################
 # RAWBIN - raw pastebin server
-# SETUP ######################
+#############################
+# SETUP
 my $dir = 'paste/';
 die "no paste dir" unless -d $dir;
-# ROOT ####################### 
+##############################
+# ROOT 
 get '/' => 'form';
-# PASTE ######################
+##############################
+# PASTE
 post '/', sub {
 	my $c = shift;
 	my $paste = $c->param('paste');
@@ -21,20 +25,21 @@ post '/', sub {
 	my $loc = $dir . $id;
 	open(my $pfh, '>', $loc);	
 	print $pfh $enc_paste;
-	$c->render(text => "wikiark.org/paste/$id");
-}; 
-# CALL ########################
+	$c->render(text => "wikiark.org/raw/$id");
+};
+###############################
+# CALL
 get '/:id' => sub {
 	my $c = shift;
 	my $id = $c->stash('id');
 	my $loc = $dir . $id;
 	return $c->render(message => 'PASTE NO EXIST') unless -e $loc;
-	open(my $pfh, "<:encoding(UTF-8)", $loc) or die;
-	my $paste = do { local $/; <$pfh>; };
+	my $paste = read_file($loc);
 	$c->render(text => $paste, format => 'txt'); 
-};
-# END ########################
-app->start;
+};# => 'view';
+################################
+# END
+app->start('daemon', '-l', 'http://*:8091');
 __DATA__
 @@ form.html.ep
 <html>
