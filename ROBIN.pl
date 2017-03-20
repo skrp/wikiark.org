@@ -16,3 +16,4 @@ post '/', sub {
   print $pfh $enc_paste;
   $c->render(text => "wikiark.org/raw/$id");
 };
+app->start('daemon', '-l', 'http://*:6661');
