@@ -37,8 +37,7 @@ get '/:id' => sub {
 	return $c->render(message => 'PASTE NO EXIST') unless -e $loc;
 	open(my $pfh, "<:encoding(UTF-8)", $loc) or die;
 	my $paste = do { local $/; <$pfh>; };
-	$paste =~ s/\n/<br>\n/g;
-	$c->render(text => $paste); 
+	$c->render(text => $paste, format => 'txt'); 
 };
 ################################
 # END
