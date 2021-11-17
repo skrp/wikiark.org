@@ -1,47 +1,11 @@
 WIKIARK.ORG
+############################
+Internal Webserver based on perl's Mojolicious
 
-Massive File Bank
+The purpose is offer the local network a file-share for heterogenous machines
+unix box : mojolicious : any web-interface device
 
-Files are lost to entropy
-ZFS heals entropy
-Storage get cheaper
-######################
-# HTTP
-http raw dump :6660
-http raw server :6661
-http dump :6662
-http chat :6663
-http git :6664
-http proxy :6665
-http share server:6666
-# HTML ###############
-html http server :7770
-html http raw server :7771
-html http dump server :7772
-html http shar server :7773
-######################
-# IRC
-irc server :
-######################
-# FTP
-ftp server :21
-######################
-# Secure XFER
-scp :22
-######################
-# Minecraft
-mcv :25565
-mcm :25566
-mch :25567
-#####################
-# VOIP
-murmurd :8881
-#####################
-# MAIL
-mail :25
-#####################
-# PRINTER
-print :secret
-#####################
-# VPS
-ssh :secret
+The unix box will have access to encrypted & network file shares both local and external.
+The gui web-interface-device will have access to files via a simple internal website
+
+This mojolicious web server provides a work around and also a alternate file-exchange method which adds both roboustness & heterogenity to a network.
